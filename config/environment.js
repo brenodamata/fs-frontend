@@ -16,7 +16,20 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    torii: {
+      // a 'session' property will be injected on routes and controllers
+      providers: {
+        'google-oauth2': {
+          redirectUri: 'http://localhost:4200/oauth2callback' // default is the current URL
+          apiKey: process.env.GOOGLE_CLIENT_ID,
+        }
+      }
+    },
+
+    apiHost: 'http://localhost:3000/api',
+
   };
 
   if (environment === 'development') {
